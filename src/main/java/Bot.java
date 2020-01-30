@@ -9,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import org.telegram.telegrambots.meta.api.objects.stickers.Sticker;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +47,7 @@ public class Bot extends TelegramLongPollingBot {
         replyKeyboardMarkup.setResizeKeyboard(true);
         replyKeyboardMarkup.setOneTimeKeyboard(true);
 
-        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+        List<KeyboardRow> keyboardRowList = new ArrayList<KeyboardRow>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
 
         keyboardFirstRow.add(new KeyboardButton("/start"));
@@ -65,6 +66,10 @@ public class Bot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
+        interface Kd{
+            void f();
+        }
+        Kd kd = () -> System.out.println();
 
     public InlineKeyboardMarkup setInlineButtons() {
         InlineKeyboardMarkup iKM = new InlineKeyboardMarkup();
@@ -87,37 +92,42 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+
     public void onUpdateReceived(Update update) {
+        boolean connection = true;
         Message msg = update.getMessage();
-        SendMessage sm = new SendMessage();
-        if(update.hasMessage()){
-            if(update.getMessage().hasText()){
-                if(update.getMessage().getText().equals("/start")){
-                    deleteMessage(update.getMessage().getChatId(), update.getMessage().getMessageId());
+            if (update.hasMessage()) {
+                if (update.getMessage().hasText()) {
+                    if (update.getMessage().getText().equals("/start")) {
+                        deleteMessage(update.getMessage().getChatId(), update.getMessage().getMessageId());
+                        connection = true;
+                    }
+                    if (update.getMessage().getText().equals("/start")) {
+                        sendMessage(msg, "Welcome");
+                        sendMessageWithInline(msg, "Do u want to start anonymous conversation");
+                    }
+                    if (update.getMessage().getText().equals("/disconnect")) {
+                        connection = false;
+                    }
                 }
-                if(update.getMessage().getText().equals("/start")){
-                    sendMessage(msg, "Welcome");
-                    sendMessageWithInline(msg, "Do u want to start anonymous conversation");
+                if(connection){
+                    anonimusChat.bootText(msg);
                 }
-//                if(update.getMessage().getText().equals("/start")){
-//                    sendMessage(msg, "Welcome Naxuy");
-//                }
-                anonimusChat.bootText(msg);
+            }
+            if (update.hasCallbackQuery()) {
+                CallbackQuery callbackQuery = update.getCallbackQuery();
+                String answer = callbackQuery.getData();
+                if (answer.equals("Yes")) {
+                    anonimusChat.setUser(callbackQuery.getFrom());
+                    sendMessage(callbackQuery.getMessage(), "Dialog started\nNow you can talk to anonymous friend\uD83D\uDE08 ");
+                    deleteMessage(callbackQuery.getMessage().getChatId(), callbackQuery.getMessage().getMessageId());
+                }
+                if (answer.equals("tapedNope")) {
+                    sendMessage(callbackQuery.getMessage(), "u taped No");
+                }
             }
         }
-        if(update.hasCallbackQuery()){
-            CallbackQuery callbackQuery = update.getCallbackQuery();
-            String answer = callbackQuery.getData();
-            if(answer.equals("Yes")){
-                anonimusChat.setUser(callbackQuery.getFrom());
-                sendMessage(callbackQuery.getMessage(), "u taped Yes");
-                deleteMessage(callbackQuery.getMessage().getChatId(), callbackQuery.getMessage().getMessageId());
-            }
-            if(answer.equals("tapedNope")){
-                sendMessage(callbackQuery.getMessage(), "u taped No");
-            }
-        }
-    }
+
     public String getBotUsername() {
         return "irorrerBot";
     }

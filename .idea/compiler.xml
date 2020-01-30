@@ -9,5 +9,8 @@
         <module name="AnonimusTelegramBotChat" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AnonimusTelegramBotChat" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
