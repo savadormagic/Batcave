@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e04657-6e01-4e07-90ec-66c2ef9d3f2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnonimusTelegramBotChat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AnonimusTelegramBotChat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AnonimusChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnonimusChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnonimusRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnonimusRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AnonimusChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AnonimusChat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bot.class" afterDir="false" />
@@ -53,6 +49,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -95,36 +92,40 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="552" y="219" key="#Project_Structure/0.40.1920.1040@0.40.1920.1040" timestamp="1580401798745" />
-    <state x="658" y="346" key="FileChooserDialogImpl" timestamp="1580405777643">
+    <state x="658" y="346" key="FileChooserDialogImpl" timestamp="1580912177550">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="658" y="346" key="FileChooserDialogImpl/0.40.1920.1040@0.40.1920.1040" timestamp="1580405777643" />
-    <state width="478" height="912" key="GridCell.Tab.0.bottom" timestamp="1580407239800">
+    <state x="658" y="346" key="FileChooserDialogImpl/0.40.1920.1040@0.40.1920.1040" timestamp="1580912177550" />
+    <state width="478" height="912" key="GridCell.Tab.0.bottom" timestamp="1580915884970">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="478" height="912" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1580407239800" />
-    <state width="478" height="912" key="GridCell.Tab.0.center" timestamp="1580407239799">
+    <state width="478" height="912" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1580915884970" />
+    <state width="478" height="912" key="GridCell.Tab.0.center" timestamp="1580915884970">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="478" height="912" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1580407239799" />
-    <state width="478" height="912" key="GridCell.Tab.0.left" timestamp="1580407239799">
+    <state width="478" height="912" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1580915884970" />
+    <state width="478" height="912" key="GridCell.Tab.0.left" timestamp="1580915884969">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="478" height="912" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1580407239799" />
-    <state width="478" height="912" key="GridCell.Tab.0.right" timestamp="1580407239799">
+    <state width="478" height="912" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1580915884969" />
+    <state width="478" height="912" key="GridCell.Tab.0.right" timestamp="1580915884970">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="478" height="912" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1580407239799" />
+    <state width="478" height="912" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1580915884970" />
     <state x="463" y="206" key="SettingsEditor" timestamp="1580405811194">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="463" y="166" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580367290193" />
     <state x="463" y="206" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1580405811194" />
-    <state x="668" y="389" key="com.intellij.ide.util.TipDialog" timestamp="1580391755476">
+    <state x="668" y="389" key="com.intellij.ide.util.TipDialog" timestamp="1580542264367">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580367079951" />
-    <state x="668" y="389" key="com.intellij.ide.util.TipDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1580391755476" />
+    <state x="668" y="389" key="com.intellij.ide.util.TipDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1580542264367" />
+    <state x="342" y="181" key="new project wizard" timestamp="1580486830918">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="342" y="181" key="new project wizard/0.40.1920.1040@0.40.1920.1040" timestamp="1580486830918" />
     <state x="666" y="180" key="refactoring.ChangeSignatureDialog" timestamp="1580404033776">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>

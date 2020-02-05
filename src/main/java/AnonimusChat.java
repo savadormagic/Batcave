@@ -1,13 +1,10 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-        import org.telegram.telegrambots.meta.api.methods.send.*;
-        import org.telegram.telegrambots.meta.api.objects.Message;
-        import org.telegram.telegrambots.meta.api.objects.PhotoSize;
-        import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.api.objects.games.Animation;
+import org.telegram.telegrambots.meta.api.methods.send.*;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
+import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
-        import javax.sound.midi.SoundbankResource;
-        import java.util.List;
+import java.util.List;
 
 public class AnonimusChat {
     private TelegramLongPollingBot tlpb;
@@ -56,8 +53,8 @@ public class AnonimusChat {
             e.printStackTrace();
         }
     }
-
-    private void sendSticker(long UserId, String AnimId){
+    //animation GIF
+    private void sendAnimation(long UserId, String AnimId){
         try {
             tlpb.execute(new SendAnimation()
             .setChatId(UserId)
@@ -66,7 +63,16 @@ public class AnonimusChat {
             e.printStackTrace();
         }
     }
-
+    //sticker
+    private void sendSticker(long UserId, String StickerId){
+        try {
+            tlpb.execute(new SendSticker()
+                    .setChatId(UserId)
+                    .setSticker(StickerId));
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
     private void sendDocument(long UserId, String DocumentID){
         SendDocument sendDocument = new SendDocument();
         try {
@@ -89,18 +95,30 @@ public class AnonimusChat {
             id = anonimusRoom.getIdFirst();
         else
             return ;
-        if(msg.hasPhoto())
+        //text
+        if (msg.hasText()) {
+            sendMessage(id, msg.getText());
+            System.out.println(id + " говорит " + msg.getText());
+        }
+        //sticker
+        if (msg.hasSticker()) {
+            sendSticker(id, msg.getSticker().getFileId());
+            System.out.println(id + " прислал стикер: " + msg.getSticker().getFileId());
+        }
+        //photo
+        if(msg.hasPhoto()){
             sendImage(id, msg.getPhoto());
-            System.out.println(id + " говоит: " + msg);
+            System.out.println(id + " прислал фотку: " + msg.getPhoto().get(0).getFileId());
+        }
         //animation
         if (msg.hasAnimation()) {
-            sendSticker(id, msg.getAnimation().toString());
-            System.out.println(id + " отпраил анимированный стикер " + msg.getAnimation().getFileId());
+            sendAnimation(id, msg.getAnimation().getFileId());
+            System.out.println(id + " отпраил анимированную поебень " + msg.getAnimation().getFileId());
         }
         //video
         if(msg.hasVideo()){
             sendVideo(id, msg.getVideo().getFileId());
-            System.out.println(id + " отправил документ " + msg.getVideo().getFileId());
+            System.out.println(id + " отправил видео " + msg.getVideo().getFileId());
         }
         //document
         if(msg.hasDocument()){

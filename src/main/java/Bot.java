@@ -1,4 +1,5 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.groupadministration.KickChatMember;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
     AnonimusChat anonimusChat = new AnonimusChat(this);
-
+    AnonimusRoom anonimusRoom = new AnonimusRoom();
     private void sendMessage(Message msg, String text){
         SendMessage sm = new SendMessage();
         //возможность разметки
@@ -84,6 +85,18 @@ public class Bot extends TelegramLongPollingBot {
         return iKM;
     }
 
+    public void kickChatMember(long userId){
+        try {
+            execute(new KickChatMember()
+            .setChatId(userId)
+            .setUserId((int) userId));
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     public void deleteMessage(Long chatId, int msgId){
         try {
             execute(new DeleteMessage(chatId, msgId));
@@ -91,26 +104,23 @@ public class Bot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
-
-
+    boolean connection;
     public void onUpdateReceived(Update update) {
-        boolean connection = true;
         Message msg = update.getMessage();
-            if (update.hasMessage()) {
+        if (update.hasMessage()) {
                 if (update.getMessage().hasText()) {
                     if (update.getMessage().getText().equals("/start")) {
                         deleteMessage(update.getMessage().getChatId(), update.getMessage().getMessageId());
                         connection = true;
-                    }
-                    if (update.getMessage().getText().equals("/start")) {
                         sendMessage(msg, "Welcome");
                         sendMessageWithInline(msg, "Do u want to start anonymous conversation");
                     }
                     if (update.getMessage().getText().equals("/disconnect")) {
                         connection = false;
+                        
                     }
                 }
-                if(connection){
+                if(connection == true){
                     anonimusChat.bootText(msg);
                 }
             }
