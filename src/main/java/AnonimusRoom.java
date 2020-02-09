@@ -8,7 +8,10 @@ public class AnonimusRoom {
         return first != null && second != null;
     }
 
+
+
     public boolean setUser(User user) {
+
         if (isFull()) {
             return false;
         }
@@ -16,7 +19,7 @@ public class AnonimusRoom {
             System.out.println("first user is here");
             first = user;
             System.out.println(first.getId());
-             return true;
+            return true;
         }
         if (first != null && second == null) {
             System.out.println("second user is here");
@@ -24,7 +27,11 @@ public class AnonimusRoom {
             System.out.println(second.getId());
             return true;
         }
-        System.out.println("ne(");
+
+        if(user == null){
+            first = null;
+            second = null;
+        }
         return false;
     }
     public String getNameFirst(){
