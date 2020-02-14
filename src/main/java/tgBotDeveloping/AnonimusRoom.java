@@ -1,3 +1,5 @@
+package tgBotDeveloping;
+
 import org.telegram.telegrambots.meta.api.objects.User;
 
 public class AnonimusRoom {
@@ -27,11 +29,6 @@ public class AnonimusRoom {
             System.out.println(second.getId());
             return true;
         }
-
-        if(user == null){
-            first = null;
-            second = null;
-        }
         return false;
     }
     public String getNameFirst(){
@@ -39,6 +36,21 @@ public class AnonimusRoom {
     }
     public String getNameSecond(){
         return second.getFirstName();
+    }
+
+    public boolean removeUsers(User user){
+        if (isFull()) {
+            return true;
+        }
+        if(first != null && second != null){
+            first = null;
+            return true;
+        }
+        if(first == null && second != null){
+            second = null;
+            return true;
+        }
+        return false;
     }
 
 

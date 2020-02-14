@@ -1,3 +1,5 @@
+package tgBotDeveloping;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.*;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -84,8 +86,15 @@ public class AnonimusChat {
         }
     }
 
+    public void clean(){
+
+    }
+
     public boolean setUser(User user) {
         return anonimusRoom.setUser(user);
+    }
+    public boolean removeUser(User user) {
+        return anonimusRoom.removeUsers(user);
     }
     public void bootText(Message msg){
         long id;
@@ -99,6 +108,11 @@ public class AnonimusChat {
         if (msg.hasText()) {
             sendMessage(id, msg.getText());
             System.out.println(id + " говорит " + msg.getText());
+        }
+        if (msg.isCommand()) {
+            if(msg.getText().equals("/disconnect")){
+
+            }
         }
         //sticker
         if (msg.hasSticker()) {
