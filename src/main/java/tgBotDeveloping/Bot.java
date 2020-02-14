@@ -12,9 +12,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import tgBotDeveloping.AnonimusChat;
-import tgBotDeveloping.AnonimusRoom;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -137,6 +136,13 @@ public class Bot extends TelegramLongPollingBot {
                 if (msg.getText().equals("/disconnect")) {
                     connection = false;
                     sendMessageWithInlineDis(msg, "Do you want to disconnect from conversation?");
+                }
+                if (msg.getText().equals("/timetable")) {
+                    try {
+                        sendMessage(msg, parseReu.getTime());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             if(connection == true){

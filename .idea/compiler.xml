@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Batcave" />
         <module name="AnonimusTelegramBotChat" />
+        <module name="Batcave" />
+        <module name="TGBot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

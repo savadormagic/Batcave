@@ -1,4 +1,4 @@
-package parser;
+package tgBotDeveloping;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -6,7 +6,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Parser {
+public class parseReu {
 
 //    public static org.jsoup.nodes.Document getPage() throws IOException {
 //        String url = "http://www.rea.perm.ru/?page_id=1036";
@@ -133,9 +133,14 @@ public class Parser {
             String timeOf = value.select("td").first().text();
             String couples = value.select("td[colspan = 6]").first().select("b").text();
             time.add(timeOf + "\n");
-            //couple.add(couples + "\n");
+            couple.add(couples + "\n");
         }
-        return  String.valueOf(time.get(0));
+        return  String.valueOf(time.get(0)  + couple.get(0)
+                                + time.get(1) + couple.get(1)
+                                + time.get(2) + couple.get(2)
+                                + time.get(3) + couple.get(3)
+                                + time.get(4) + couple.get(4)
+                                + time.get(5) + couple.get(5));
     }
     public static String getCouples() throws IOException {
         String url = "http://www.rea.perm.ru/?page_id=1036&id=Timetable/rs_PKo-21";
